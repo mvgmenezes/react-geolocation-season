@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import ReactDOM from 'react-dom'
 import SeasonDisplay from './SeasonDisplay';
+import Loader from './Loader';
+import Error from './Error';
 
 class App extends Component{
 
@@ -25,7 +27,7 @@ class App extends Component{
     render(){
 
         if (this.state.erroMessage && !this.state.latitude){
-            return <div>Error: {this.state.erroMessage}</div>        
+            return <Error message={this.state.erroMessage} directives="Is necessary able the geolocation in your browser."/>     
         }
 
         if (!this.state.erroMessage && this.state.latitude){
@@ -33,7 +35,7 @@ class App extends Component{
         }
 
         return (
-            <div>Loading...</div>
+            <Loader message="Please, accept location request."/>
         )
     }
     
